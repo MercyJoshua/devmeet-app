@@ -4,7 +4,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import './globals.css';
 import { usePathname } from 'next/navigation';
-
+import { Analytics } from "@vercel/analytics/react";
 export default function RootLayout({ children }) {
   const pathname = usePathname();
 
@@ -19,6 +19,7 @@ export default function RootLayout({ children }) {
         {!isDashboard && <Header />}
         <main>{children}</main>
         {!isDashboard && <Footer />}
+        <Analytics />
       </body>
     </html>
     </UserProvider>
