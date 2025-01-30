@@ -41,62 +41,66 @@ const FeaturesSection = () => {
   ];
 
   return (
-    <div
-      id="features-section"
-      className="w-full max-w-6xl mx-auto py-12 px-4 sm:px-6 lg:px-8"
-    >
-      <div className="text-center mb-8">
-        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-purple-500">
-          Features
-        </h1>
+
+    <div className="container mx-auto justify-between items-center px-4 py-4">
+
+      <div id="features-section" className="w-full max-w-6xl mx-auto py-12 px-4">
+
+        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-purple-500 text-center mb-8">Features</h1>
+
+
+        <Swiper
+
+          spaceBetween={20}
+
+          slidesPerView={2}
+
+          loop={true}
+
+          autoplay={{ delay: 3000, disableOnInteraction: false }}
+
+          pagination={{ clickable: true }}
+
+          navigation
+
+          modules={[Autoplay, Pagination, Navigation]}
+
+          breakpoints={{
+
+            640: { slidesPerView: 1 },
+
+            768: { slidesPerView: 2 },
+
+            1024: { slidesPerView: 3 },
+
+          }}
+
+        >
+
+          {features.map((feature, index) => (
+
+            <SwiperSlide key={index} className="flex justify-center">
+
+              <div className={`flex flex-col items-center w-full max-w-xs py-6 px-4 rounded-lg shadow-lg ${feature.bgColor}`}>
+
+                <Image src={feature.icon} alt={feature.title} width={150} height={150} className="mb-4 rounded-md" />
+
+                <h2 className="text-lg font-semibold mb-2 text-white text-center">{feature.title}</h2>
+
+                <p className="text-center text-sm text-white">{feature.description}</p>
+
+              </div>
+
+            </SwiperSlide>
+
+          ))}
+
+        </Swiper>
+
       </div>
 
-      <Swiper
-        spaceBetween={30}
-        slidesPerView={1}
-        loop={true}
-        autoplay={{
-          delay: 3000,
-          disableOnInteraction: false,
-        }}
-        pagination={{ clickable: true }}
-        navigation
-        modules={[Autoplay, Pagination, Navigation]}
-        breakpoints={{
-          640: { slidesPerView: 1 }, // Small screens
-          768: { slidesPerView: 2 }, // Tablets
-          1024: { slidesPerView: 3 }, // Desktops
-        }}
-        className="flex justify-center items-center"
-      >
-        {features.map((feature, index) => (
-          <SwiperSlide key={index} className="flex justify-center">
-            <div
-              className={`flex flex-col items-center w-full max-w-xs sm:max-w-sm md:max-w-md py-8 px-6 rounded-lg shadow-lg ${feature.bgColor}`}
-              style={{
-                backdropFilter: "blur(10px)",
-                boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
-                border: "1px solid rgba(4, 47, 46, 0.5)",
-              }}
-            >
-              <Image
-                src={feature.icon}
-                alt={feature.title}
-                width={200}
-                height={200}
-                className="mb-4 rounded-md"
-              />
-              <h2 className="text-lg sm:text-xl md:text-2xl font-semibold mb-2 text-white text-center">
-                {feature.title}
-              </h2>
-              <p className="text-center text-sm sm:text-base md:text-lg text-white">
-                {feature.description}
-              </p>
-            </div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
     </div>
+
   );
 };
 

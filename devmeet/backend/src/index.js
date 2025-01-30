@@ -24,7 +24,7 @@ const server = http.createServer(app);
 const PORT = process.env.PORT || 5000;
 
 // Frontend origin
-const allowedOrigins = ["http://localhost:3000", "http://localhost:3001"];
+const allowedOrigins = ["http://localhost:3000", "http://localhost:3001", "https://devmeet-app.vercel.app/"];
 
 // Initialize Socket.IO
 const io = new Server(server, {

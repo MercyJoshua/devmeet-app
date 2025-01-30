@@ -1,5 +1,6 @@
 const CTASection = () => {
   return (
+    <div className="container mx-auto flex justify-between items-center px-6 py-4">
     <div
       id="cta-section"
       className="mt-4 py-16 mb-8 text-white text-left px-4 sm:px-8 lg:px-16 xl:px-24"
@@ -21,6 +22,8 @@ const CTASection = () => {
         Get Started for Free
       </a>
     </div>
+    </div>
+    
   );
 };
 

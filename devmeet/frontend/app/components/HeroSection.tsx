@@ -3,9 +3,10 @@ import Link from 'next/link';
 
 const HeroSection = () => {
   return (
+    <div className="container mx-auto flex justify-between items-center px-6 py-4">
     <div id="hero-section" className="flex flex-col-reverse md:flex-row items-center justify-between px-4 md:px-16 lg:px-24 py-12 text-white">
       <div className="md:w-1/2">
-        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-purple-500 leading-tight mb-4">
+        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-purple-500 leading-tight mb-4">
           Collaborate on Code <br />
           Seamlessly in <br />
           Real-Time
@@ -46,6 +47,7 @@ const HeroSection = () => {
           width={500}
           height={500}
         />
+      </div>
       </div>
     </div>
   );
