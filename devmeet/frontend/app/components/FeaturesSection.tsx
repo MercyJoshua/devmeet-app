@@ -66,7 +66,7 @@ const FeaturesSection = () => {
                   height={150}
                   className="mb-4 rounded-md"
                 />
-                <h2 className="text-lg font-semibold mb-2 text-white text-center">
+                <h2 className="text-lg font-semibold mb-2 text-purple-500 text-center">
                   {feature.title}
                 </h2>
                 <p className="text-center text-sm text-white">
