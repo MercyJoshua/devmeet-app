@@ -44,8 +44,8 @@ app.use(
 );
 
 // Middleware
-app.use(express.json());  // Middleware to parse JSON data
-app.use(express.urlencoded({ extended: true }));  // Middleware to parse URL-encoded data
+app.use(express.json()); 
+app.use(express.urlencoded({ extended: true }));  
 
 const authenticate = (req, res, next) => {
   if (req.session && req.session.user) {
@@ -57,11 +57,12 @@ const authenticate = (req, res, next) => {
 
 // MySQL session store setup
 const sessionStore = new MySQLStore({
-  host: "localhost",
+  host: process.env.DATABASE_HOST,
   port: 3306,
-  user: "root",
-  password: "",
-  database: "devmeet",
+  user: process.env.DATABASE_USER,
+  password: process.env.DATABASE_PASSWORD,
+  database: process.env.DATABASE_NAME,
+  connectTimeout: 60000, 
 });
 
 app.use(
@@ -81,8 +82,6 @@ app.use(
 );
 
 app.use('/uploads', express.static('uploads')); 
-// const UPLOAD_DIR = path.join(__dirname, 'uploads');
-// app.use('/uploads', express.static(UPLOAD_DIR));
 
 // Routes
 app.use('/api/auth', authRoutes);
@@ -97,12 +96,10 @@ app.use('/api/explorer', editorRoutes);
 
 // WebSocket logic for real-time collaboration
 io.on('connection', (socket) => {
- // console.log('A user connected:', socket.id);
 
   // Handle incoming code updates
   socket.on('code_update', (data) => {
-   // console.log('Code update received:', data);
-    socket.broadcast.emit('code_update', data); // Broadcast code changes to other clients
+    socket.broadcast.emit('code_update', data);
   });
 
   // Handle messages in chat
@@ -113,7 +110,6 @@ io.on('connection', (socket) => {
 
   // Handle disconnection
   socket.on('disconnect', () => {
-   // console.log('User disconnected:', socket.id);
   });
 });
 
