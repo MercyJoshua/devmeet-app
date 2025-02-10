@@ -113,7 +113,7 @@ const Header = () => {
             Sign In
           </Link>
 
-          <Link href="/auth/Sign UpForm" className="block text-purple-500 border border-emerald-400 px-2 py-1 rounded hover:text-stone-300">
+          <Link href="/auth/SignUpForm" className="block text-purple-500 border border-emerald-400 px-2 py-1 rounded hover:text-stone-300">
             Sign Up
           </Link>
         </nav>
